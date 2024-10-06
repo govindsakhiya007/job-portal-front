@@ -1,0 +1,57 @@
+// employee.model.ts
+export interface Employee {
+    id: string;  // Unique identifier for each employee
+    global_id: string;
+    unit_Id: string;
+    employee_type: string;
+    employee_Id: string;
+    salute: string;
+    first_name: string;
+    middle_name: string;
+    last_name: string;
+    gender: string;
+    email: string;
+    mobile: string;
+    window_login_Id?: string;
+    domain_name?: string;
+    direct_indirect: string;
+    deputation_start_date?: Date;
+    deputation_end_date?: Date;
+    deputation_location?: string;
+    shift_rule?: string;
+    remarks?: string;
+    interview_date?: Date;
+    unit_DOJ: Date;
+    group_DOJ: Date;
+    confirmed: boolean;
+    confirmation_date?: Date;
+    extended_month?: number;
+    extended_date_reason?: string;
+    current_group_experiences?: string;
+    department?: string;
+    select_code?: string;
+    designation?: string;
+    grade?: string;
+    location?: string;
+    resignation_date?: Date;
+    unit_DOL?: Date;
+    group_DOL?: Date;
+    reason_for_leaving?: string;
+    retirement_Date?: Date;
+    profile_img?: string;
+    dob: Date;
+    birth_place?: string;
+    physical_status?: string;
+    blood_group?: string;
+    national_Id: string;
+    personal_email?: string;
+    pan_no: string;
+    aadhar_no?: string;
+    company_PF_no?: string;
+    pran_number?: string;
+    labour_card_no?: string;
+    passport_no?: string;
+    issued_on?: Date;
+    valid_upto?: Date;
+    place_Of_issue?: string;
+}

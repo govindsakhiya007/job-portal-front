@@ -1,0 +1,36 @@
+/* sidebar.component.css */
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #f8f9fa;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 1px solid #ddd;
+  }
+  
+  .nav-link {
+    color: #333;
+    padding: 10px;
+    font-size: 1.1em;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Hover effect for the links */
+  .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Active link styling */
+  .nav-link.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .nav-item + .nav-item {
+    margin-top: 10px;
+  }
+  
