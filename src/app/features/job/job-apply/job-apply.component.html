@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 bg-light p-5">
+            <h2>Apply Job</h2>
+
+            <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Cover Letter</label>
+                        <textarea id="cover_letter" formControlName="cover_letter" rows="5" class="form-control"
+                            placeholder="Cover Letter"
+                            [class.is-invalid]="applicationForm.get('cover_letter')?.invalid && applicationForm.get('cover_letter')?.touched"></textarea>
+                        
+                        <div *ngIf="applicationForm.get('cover_letter')?.errors?.required && applicationForm.get('cover_letter')?.touched"
+                            class="invalid-feedback">
+                            Cover letter is required.
+                        </div>
+                        <div *ngIf="applicationForm.get('cover_letter')?.errors?.minlength && applicationForm.get('cover_letter')?.touched"
+                            class="invalid-feedback">
+                            Cover letter must be at least 50 characters long.
+                        </div>
+                        <div *ngIf="applicationForm.get('cover_letter')?.errors?.maxlength && applicationForm.get('cover_letter')?.touched"
+                            class="invalid-feedback">
+                            Cover letter cannot exceed 500 characters.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12 d-flex justify-content-end mt-3">
+                        <a routerLink="/jobs" class="btn btn-secondary">Cancel</a>&nbsp;
+                        <button type="submit" class="btn btn-success" [disabled]="applicationForm.invalid">Apply</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

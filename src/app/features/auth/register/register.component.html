@@ -1,0 +1,104 @@
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6 bg-light p-5">
+			<h2 class="text-center">Register</h2>
+
+			<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<label for="name" class="form-label">Full Name</label>
+						<input id="name" formControlName="name" type="text" class="form-control"
+							[class.is-invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+							placeholder="Enter Full Name" />
+						<div *ngIf="registerForm.get('name')?.errors?.required && registerForm.get('name')?.touched"
+							class="invalid-feedback">
+							Name is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<label for="email" class="form-label">Email</label>
+						<input id="email" formControlName="email" type="email" class="form-control"
+							[class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+							placeholder="Enter Email" />
+						<div *ngIf="registerForm.get('email')?.errors?.required && registerForm.get('email')?.touched"
+							class="invalid-feedback">
+							Email is required.
+						</div>
+						<div *ngIf="registerForm.get('email')?.errors?.email && registerForm.get('email')?.touched"
+							class="invalid-feedback">
+							Please enter a valid email.
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<label for="password" class="form-label">Password</label>
+						<div class="input-group">
+							<input id="password" [type]="passwordFieldType" formControlName="password"
+								class="form-control" placeholder="Enter password"
+								[class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" />
+							<button type="button" class="btn btn-outline-secondary"
+								(click)="togglePasswordVisibility()">
+								<i class="fa"
+									[ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"></i>
+							</button>
+							<div *ngIf="registerForm.get('password')?.errors?.required && registerForm.get('password')?.touched"
+								class="invalid-feedback">
+								Password is required.
+							</div>
+							<div *ngIf="registerForm.get('password')?.errors?.minlength && registerForm.get('password')?.touched"
+								class="invalid-feedback">
+								Password must be at least 6 characters long.
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<label for="password_confirmation" class="form-label">Confirm Password</label>
+						<div class="input-group">
+							<input id="confirmPassword" [type]="confirmPasswordFieldType"
+								formControlName="password_confirmation" class="form-control" placeholder="Confirm password"
+								[class.is-invalid]="registerForm.hasError('passwordsMismatch') && registerForm.get('confirmPassword')?.touched" />
+							<button type="button" class="btn btn-outline-secondary"
+								(click)="toggleConfirmPasswordVisibility()">
+								<i class="fa"
+									[ngClass]="confirmPasswordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"></i>
+							</button>
+							<div *ngIf="registerForm.get('confirmPassword')?.errors?.required && registerForm.get('confirmPassword')?.touched"
+								class="invalid-feedback">
+								Confirm password is required.
+							</div>
+							<div *ngIf="registerForm.hasError('passwordsMismatch') && registerForm.get('confirmPassword')?.touched"
+								class="invalid-feedback">
+								Passwords do not match.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<label class="form-label" for="role">Role</label>
+						<select class="form-select form-control" formControlName="role" id="role">
+							<option value="">-- Select Role --</option>
+							<option value="employer">Employer</option>
+							<option value="applicant">Applicant</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<a routerLink="/auth/login" class="text-primary">Already registered? Login here</a><br />
+						<button type="submit" class="btn btn-success mt-2 w-100"
+							[disabled]="registerForm.invalid">Register</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

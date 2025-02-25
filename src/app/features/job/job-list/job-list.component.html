@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12 mb-2">
+            <h2>Jobs</h2>
+            <a class="btn btn-primary pull-right" routerLink="/jobs/create"><i class="fa fa-plus"></i></a>
+        </div>
+
+        <div *ngIf="jobs.length === 0" class="alert alert-info">
+            There are no any jobs available.
+        </div>
+
+        <div class="col-sm-12" *ngIf="jobs.length > 0">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let job of jobs; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.company_name }}</td>
+                        <td>{{ job.location }}</td>
+                        <td>{{ job.salary | currency }}</td>
+                        <td>{{ job.created_at | date: 'yyyy-MM-dd' }}</td>
+                        <td>
+                            <a [routerLink]="['/jobs', job.id]" class="btn btn-primary btn-sm">View</a>&nbsp;
+                            <a [routerLink]="['/jobs', job.id, 'apply']" class="btn btn-secondary btn-sm">Apply</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 bg-light p-5">
+            <h2>Create Job</h2>
+
+            <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Job Title</label>
+                        <input type="text" class="form-control" formControlName="title" placeholder="Enter job title"
+                            [class.is-invalid]="jobForm.get('title')?.invalid && jobForm.get('title')?.touched">
+                        <div *ngIf="jobForm.get('title')?.errors?.required && jobForm.get('title')?.touched" class="invalid-feedback">
+                            Job title is required.
+                        </div>
+                        <div *ngIf="jobForm.get('title')?.errors?.maxlength && jobForm.get('title')?.touched" class="invalid-feedback">
+                            Job title must not exceed 255 characters.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Company</label>
+                        <input type="text" class="form-control" formControlName="company_name" placeholder="Enter company name"
+                            [class.is-invalid]="jobForm.get('company_name')?.invalid && jobForm.get('company_name')?.touched">
+                        <div *ngIf="jobForm.get('company_name')?.errors?.required && jobForm.get('company_name')?.touched" class="invalid-feedback">
+                            Company is required.
+                        </div>
+                        <div *ngIf="jobForm.get('company_name')?.errors?.maxlength && jobForm.get('company_name')?.touched"
+                            class="invalid-feedback">
+                            Company name must not exceed 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control" formControlName="location" placeholder="Enter location"
+                            [class.is-invalid]="jobForm.get('location')?.invalid && jobForm.get('location')?.touched">
+                        <div *ngIf="jobForm.get('location')?.errors?.required && jobForm.get('location')?.touched" class="invalid-feedback">
+                            Location is required.
+                        </div>
+                        <div *ngIf="jobForm.get('location')?.errors?.maxlength && jobForm.get('location')?.touched" class="invalid-feedback">
+                            Location must not exceed 255 characters.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Salary</label>
+                        <input type="number" class="form-control" formControlName="salary" placeholder="00.00"
+                            [class.is-invalid]="jobForm.get('salary')?.invalid && jobForm.get('salary')?.touched">
+                        <div *ngIf="jobForm.get('salary')?.errors?.required && jobForm.get('salary')?.touched" class="invalid-feedback">
+                            Salary is required.
+                        </div>
+                        <div *ngIf="jobForm.get('salary')?.errors?.min && jobForm.get('salary')?.touched" class="invalid-feedback">
+                            Salary must be a positive number.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Job Description</label>
+                        <textarea formControlName="description" class="form-control" rows="4" placeholder="Enter job description"
+                            [class.is-invalid]="jobForm.get('description')?.invalid && jobForm.get('salary')?.touched"></textarea>
+                        <div *ngIf="jobForm.get('description')?.errors?.required && jobForm.get('salary')?.touched" class="invalid-feedback">
+                            Description is required.
+                        </div>
+                        <div *ngIf="jobForm.get('description')?.errors?.minlength && jobForm.get('salary')?.touched" class="invalid-feedback">
+                            Minimum 10 characters required.
+                        </div>
+                        <div *ngIf="jobForm.get('description')?.errors?.maxlength && jobForm.get('salary')?.touched" class="invalid-feedback">
+                            Maximum 1000 characters allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12 d-flex justify-content-end mt-3">
+                        <a routerLink="/jobs" class="btn btn-secondary">Cancel</a>&nbsp;
+                        <button type="submit" class="btn btn-success" [disabled]="jobForm.invalid">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

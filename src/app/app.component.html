@@ -1,11 +1,10 @@
-<!-- app.component.html -->
 <div class="wrapper">
-  <app-header></app-header>
-  <div class="d-flex">
-    <app-sidebar></app-sidebar>
-    <main class="content p-4 flex-grow-1">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-  <app-footer></app-footer>
+	<app-header *ngIf="isAuthenticated"></app-header>
+	<div class="d-flex">
+		<app-sidebar *ngIf="isAuthenticated"></app-sidebar>
+		<main class="content p-4 flex-grow-1">
+			<router-outlet></router-outlet>
+		</main>
+	</div>
+	<app-footer *ngIf="isAuthenticated"></app-footer>
 </div>

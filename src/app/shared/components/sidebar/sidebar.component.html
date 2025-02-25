@@ -1,7 +1,11 @@
 <nav class="sidebar bg-light p-3">
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Employees</a>
-    </li>
-  </ul>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a class="nav-link active" routerLink="/jobs">Jobs</a>
+		</li>
+		<li class="nav-item" *ngIf="userRole === 'employer'">
+			<a class="nav-link active" routerLink="/applications">Applications</a>
+		</li>
+	</ul>
 </nav>
+
