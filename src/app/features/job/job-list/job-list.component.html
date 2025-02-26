@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-sm-12 mb-2">
             <h2>Jobs</h2>
-            <a class="btn btn-primary pull-right" routerLink="/jobs/create"><i class="fa fa-plus"></i></a>
+            <ng-container *ngIf="userRole === 'employer'">
+                <a class="btn btn-primary pull-right" routerLink="/jobs/create"><i class="fa fa-plus"></i></a>
+            </ng-container>
         </div>
-
         <div *ngIf="jobs.length === 0" class="alert alert-info">
             There are no any jobs available.
         </div>
-
         <div class="col-sm-12" *ngIf="jobs.length > 0">
             <table class="table table-bordered">
                 <thead class="table-dark">

@@ -15,10 +15,12 @@ import { JobService } from '../../../core/services/job.service';
 
 export class JobListComponent {
 	jobs: any[] = [];
+	userRole: string | null = '';
 
 	constructor(private jobService: JobService) {}
 
 	ngOnInit(): void {
+		this.userRole = localStorage.getItem('role');
 		this.fetchJobs();
 	}
 

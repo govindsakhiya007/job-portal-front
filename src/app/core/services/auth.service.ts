@@ -24,8 +24,11 @@ export class AuthService {
 	}
 
 	login(credentials: { email: string; password: string }): Observable<User> {
-		this.authStatus.next(true);
-		return this.http.post<User>(`${environment.apiBaseUrl}/login`, credentials);
+		return this.http.post<User>(`${environment.apiBaseUrl}/login`, credentials).pipe(
+			tap(() => {
+				this.authStatus.next(true);
+			})
+		);
 	}
 
 	isAuthenticated(): boolean {

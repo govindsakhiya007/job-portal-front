@@ -22,6 +22,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 				errorMessage = 'Forbidden! You do not have permission to access this resource.';
 			} else if (error.status === 500) {
 				errorMessage = 'Server error! Please try again later.';
+			} else {
+				errorMessage = error.error.message;
 			}
 
 			return throwError(() => new Error(errorMessage));

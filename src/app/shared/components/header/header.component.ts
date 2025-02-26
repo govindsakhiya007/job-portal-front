@@ -24,11 +24,11 @@ export class HeaderComponent {
     logout() {
 		this.authService.logout().subscribe({
 			next: () => {
-				this.toastr.success('Logout successfully', 'user');
+				this.toastr.success('Logout successfully', 'User');
 				this.router.navigate(['/auth/login']);
 			},
 			error: (err) => {
-				this.toastr.error('Logout failed', 'user');
+				this.toastr.error('Logout failed', 'User');
 			}
 		});
     }
