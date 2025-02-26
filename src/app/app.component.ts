@@ -28,7 +28,8 @@ export class AppComponent {
 	ngOnInit() {
 		this.isAuthenticated = this.authService.isAuthenticated();
 
-		// Listen for auth changes
+		// --
+		// Listen auth changes
 		this.authService.authStatus$.subscribe(status => {
 			this.isAuthenticated = status;
 		});

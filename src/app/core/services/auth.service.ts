@@ -24,6 +24,7 @@ export class AuthService {
 	}
 
 	login(credentials: { email: string; password: string }): Observable<User> {
+		this.authStatus.next(true);
 		return this.http.post<User>(`${environment.apiBaseUrl}/login`, credentials);
 	}
 
@@ -40,6 +41,8 @@ export class AuthService {
 			tap(() => {
 				localStorage.removeItem('token');
 				localStorage.removeItem('role');
+
+				this.authStatus.next(false);
 				this.router.navigate(['/login']);
 			})
 		);
